@@ -11,7 +11,7 @@
             xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
             mc:Ignorable="d"
             GlowBrush="{StaticResource AccentColorBrush}"
-            Height="1000" Width="1800"
+            Height="750" Width="1200"
             Background="{StaticResource Background}" Foreground="{StaticResource Foreground}"
             d:DataContext="{d:DesignInstance {x:Type viewModels:MainViewModel}}">
 
@@ -79,6 +79,16 @@
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Button.Template>
+            </Button>
+
+            <Button HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="46" Cursor="Hand" 
+                    ToolTip="Settings" Margin="5,4,0,0" FontSize="32" Command="{Binding OpenSettingsCommand}">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Source="{StaticResource Settings}" />
+                    </ControlTemplate>
+                </Button.Template>
+
             </Button>
         </StackPanel>
 
