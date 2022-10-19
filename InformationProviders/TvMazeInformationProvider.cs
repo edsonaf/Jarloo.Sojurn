@@ -139,7 +139,7 @@ internal class TvMazeInformationProvider : IInformationProvider
 
     public static string GetCountryCode(dynamic show)
     {
-        const string DEFAULT_COUNTRY_CODE = "US";
+        const string DEFAULT_COUNTRY_CODE = "US"; // Idea: Get Country Code based on location
         return show == null ? DEFAULT_COUNTRY_CODE // if null get default country
             : show.network?.country?.code // else network provider country
             ?? show.webChannel?.country?.code // else internet provider country
