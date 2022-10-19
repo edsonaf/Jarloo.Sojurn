@@ -140,22 +140,10 @@ internal class TvMazeInformationProvider : IInformationProvider
     public static string GetCountryCode(dynamic show)
     {
         const string DEFAULT_COUNTRY_CODE = "US";
-        if (show == null)
-            return DEFAULT_COUNTRY_CODE;
-
-        if (show.network != null)
-        {
-            return show.network.country.code;
-        }
-
-        //support netflix (e.g. daredevil ,house of cards ,orange is the new black ...)
-        if (show.webChannel != null && show.webChannel.country != null)
-        {
-            return show.webChannel.country.code;
-        }
-
-        //failesafe
-        return DEFAULT_COUNTRY_CODE;
+        return show == null ? DEFAULT_COUNTRY_CODE // if null get default country
+            : show.network?.country?.code // else network provider country
+            ?? show.webChannel?.country?.code // else internet provider country
+            ?? DEFAULT_COUNTRY_CODE; // else default country
     }
 
     private static int GetTime(dynamic time, char type)
